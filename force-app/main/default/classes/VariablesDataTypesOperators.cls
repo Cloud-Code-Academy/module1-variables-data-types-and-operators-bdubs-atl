@@ -18,12 +18,12 @@
  * If statements are not specifically covered in the lesson this module, but review module 2 flow control section for an overview if needed.
  * Resources: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_if_else.htm 
  * 
- * @author Your Name
+ * @author Ben Wheeler
  */
 
 public with sharing class VariablesDataTypesOperators {
     /**
-     * Question 1
+     * Question 1  <--CORRECT BW
      * Performs addition of two numbers.
      * If either of the numbers is null, return null.
      * Example: addition(1, 2) should return 3
@@ -32,11 +32,16 @@ public with sharing class VariablesDataTypesOperators {
      * @return The sum of the two numbers, or null if either number is null.
      */
     public static Integer addition(Integer a, Integer b) {  
-        return null; // Replace null with the variable you used to store the result
+        if (a == null || b == null) {
+            return null;
+        } 
+        Integer addition = a + b;
+        return addition;
+         // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 2
+     * Question 2 <-- CORRECT BW
      * Performs subtraction of two numbers.
      * Example: subtraction(1, 2) should return -1
      * @param a The first number.
@@ -44,11 +49,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return The difference between the two numbers.
      */
     public static Integer subtraction(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        Integer subtraction = a - b;
+        return subtraction; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 3
+     * Question 3 <-- CORRECT BW
      * Performs multiplication of two numbers.
      * Example: multiplication(2, 3) should return 6
      * @param a The first number.
@@ -56,11 +62,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return The product of the two numbers.
      */
     public static Integer multiplication(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        Integer multiplication = a * b;
+        return multiplication; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 4
+     * Question 4    <-- CORRECT BW
      * Performs division of two numbers.
      * If the denominator is zero, return 0 to avoid division by zero error.
      * Example: division(6, 3) should return 2
@@ -69,11 +76,16 @@ public with sharing class VariablesDataTypesOperators {
      * @return The quotient of the division, or 0 if the denominator is zero.
      */
     public static Decimal division(Integer a, Integer b) {
-        return null; // Replace null with the variable you used to store the result
+        if (b == 0) {
+            return 0;
+        }
+        Decimal division;
+     division = a / b;
+        return division; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 5
+     * Question 5 <---CORRECT!!!
      * Checks if a number is even.
      * Example: isEven(2) should return true
      * This concept is not specifically covered in the content this week, but you can use the Math class and the modulus function to understand if the number is even or odd.
@@ -83,22 +95,27 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the number is even, False otherwise.
      */
     public static Boolean isEven(Integer num) {
-        return null; // Replace null with the variable you used to store the result
-    }
+        Boolean isEven;
+        Integer remainder =  Math.mod(num, 2);
+            return remainder == 0;
+                }
+       // Replace null with the variable you used to store the result
+    
 
     /**
-     * Question 6
+     * Question 6 <---CORRECT!!!
      * Checks if a number is positive.
      * Example: isPositive(2) should return true
      * @param num The number to check.
      * @return true if the number is positive, false otherwise.
      */
     public static Boolean isPositive(Integer num) {
-        return null; // Replace null with the variable you used to store the result
+        return num > 0; 
+        // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 7
+     * Question 7  <---CORRECT!!!
      * Concatenates two strings.
      * Example: concatenateStrings('Hello', 'World') should return 'HelloWorld'
      * @param str1 The first string.
@@ -106,11 +123,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return The concatenated string.
      */
     public static String concatenateStrings(String str1, String str2) {
-        return null; // Replace null with the variable you used to store the result
+        String concatenateStrings = str1 + str2;
+        return concatenateStrings; // Replace null with the variable you used to store the result
     }
 
 	/**
-     * Question 8
+     * Question 8  <--Correct BW
 	 * Constructs a sentence by concatenating a given noun, verb, and ending punctuation.
 	 * The sentence is structured to begin with 'The', followed by the noun, then 'is', the verb, and finally the ending punctuation.
 	 * Example: createSentence('cat', 'jumping', '!') should return 'The cat is jumping!'
@@ -121,7 +139,8 @@ public with sharing class VariablesDataTypesOperators {
 	 * @return The complete sentence as a single String.
 	 */
 	public static String createSentence(String noun, String verb, String endingPunctuation) {
-		return null; // Replace null with the variable you used to store the result
+        String createsentence = 'The ' + noun + ' is ' + verb + endingPunctuation;
+		return createSentence; // Replace null with the variable you used to store the result
 	}
 
     /**
@@ -166,7 +185,7 @@ public with sharing class VariablesDataTypesOperators {
     }    
 
     /**
-     * Question 12
+     * Question 12  <--CORRECT BW
      * Calculates the average of three numbers.
      * Formula: Average = (Sum of Numbers) ÷ (Total Numbers)
      * Example: averageOfThreeNumbers(1, 2, 3) should return 2
@@ -176,7 +195,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return The average of the three numbers.
      */
     public static Double averageOfThreeNumbers(Integer a, Integer b, Integer c) {
-        return null; // Replace null with the variable you used to store the result
+        Double avgOfThree = (a + b + c) / 3;
+        return avgOfThree; // Replace null with the variable you used to store the result
     }
 
     /**
