@@ -144,7 +144,7 @@ public with sharing class VariablesDataTypesOperators {
 	}
 
     /**
-     * Question 9
+     * Question 9  <--Correct BW
      * Checks if a date is in the past.
      * Example: isDateInPast(Date.newInstance(2019, 1, 1)) should return true
      * The concept of getting the current date is not specifically covered in the content this week, but you can use the Date class to get the current date.
@@ -152,12 +152,21 @@ public with sharing class VariablesDataTypesOperators {
      * @param dt The date to check.
      * @return True if the date is in the past, False otherwise.
      */
-    public static Boolean isDateInPast(Date dt) {
-        return null; // Replace null with the variable you used to store the result
-    }
+    public static Boolean isDateInPast(Date dt) { //Is dt already determined? 
+            // Check if dt is before today
+            return dt < Date.today();
+        }
+        // I did not come up with that answer on my own. The answer I came up with is:
+        /* Date today = Date.today();
+        if (dt < today) {
+            return true; // The date is in the past
+            }
+            else {
+                return false; //The date is today or in the future
+            }   */
 
     /**
-     * Question 10
+     * Question 10    <--- Correct!! BW
      * Checks if a date is today or in the future.
      * Example: isDateTodayOrFuture(Date.newInstance(2019, 1, 1)) should return false
      * The concept of getting the current date is not specifically covered in the content this week, but you can use the Date class to get the current date.
@@ -166,11 +175,12 @@ public with sharing class VariablesDataTypesOperators {
      * @return True if the date is today or in the future, False otherwise.
      */
     public static Boolean isDateTodayOrFuture(Date dt) {
-        return null; // Replace null with the variable you used to store the result
+        return (dt > Date.today() || dt == Date.today());
+         // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 11
+     * Question 11  <---Correct BW
      * Converts the number of minutes to milliseconds.
      * The conversion factor from minutes to milliseconds is a constant of 60000.
      * Formula: Milliseconds = minutes * 60000
@@ -179,9 +189,9 @@ public with sharing class VariablesDataTypesOperators {
      * @return The number of milliseconds equivalent to the given number of minutes.
      */
     public static Integer convertMinutesToMilliseconds(Integer minutes) {
-        Integer MILLISECONDS_PER_MINUTE = null; // Make this value a constant
-        Integer milliseconds;
-        return null; // Replace null with the variable you used to store the result
+        final Integer MILLISECONDS_PER_MINUTE = 60000; // Make this value a constant
+        Integer milliseconds = minutes * MILLISECONDS_PER_MINUTE;
+        return milliseconds; // Replace null with the variable you used to store the result
     }    
 
     /**
@@ -200,7 +210,7 @@ public with sharing class VariablesDataTypesOperators {
     }
 
     /**
-     * Question 13
+     * Question 13   <---Correct! BW
      * Adjusts the order of operations in an arithmetic expression to produce a desired result.
      * In this case, parentheses are added to the expression (5 + 7) * 3 to ensure that addition is performed before multiplication.
      * Example: adjustOrderOfOperations1(5, 7, 3) should return 36
@@ -211,14 +221,14 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Integer adjustOrderOfOperations1(Integer a, Integer b, Integer c) {
         // Add parentheses around the addition operation so that it is performed before multiplication
-        Integer result = a + b * c;
+        Integer result = (a + b) * c; //I added parentheses here - bw
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 14
+     * Question 14  <---Correct!! BW
      * Modifies the expression to adhere to PEMDAS rules in order to change its result.
      * @return The result of the expression after modifications.
      */
@@ -226,12 +236,12 @@ public with sharing class VariablesDataTypesOperators {
         // Add parentheses in the below expression to change the result.
         // The result of the expression as it is right now is 43. 
         // You should add parentheses so that the result of the expression becomes 8.
-        Integer answer = 48 - 15 + 5 * 2;
-        return null; // Replace null with the variable you used to store the result
+        Integer answer = 48 - ((15 + 5) * 2);
+        return answer; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 15
+     * Question 15  <---Correct!! BW
      * Adjusts the order of operations in an arithmetic expression to produce a desired result.
      * In this case, parentheses are added to the expression (a * b - c) / d + e to ensure that 
      * multiplication and subtraction are performed before division, which in turn is performed 
@@ -246,13 +256,13 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Double complexOrderOfOperations(Integer a, Integer b, Integer c, Integer d, Integer e) {
         // Add parentheses around the multiplication and subtraction operations so that they are performed before division and addition
-        Double result = a * b - c / (Double) d + e;
+        Double result = (a * b - c)/ (Double) d + e;
 
-        return null; // Replace null with the variable you used to store the result
+        return result; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 16
+     * Question 16  <---DONE!!!
      * Converts the temperature from Fahrenheit to Celsius.
      * Formula: Celsius = (Fahrenheit - 32) * 5/9.
      * @param fahrenheit The temperature in Fahrenheit.
@@ -262,14 +272,14 @@ public with sharing class VariablesDataTypesOperators {
         final Double SUBTRACT_FACTOR = 32.0;
         final Double MULTIPLY_FACTOR = 5.0;
         final Double DIVIDE_FACTOR = 9.0;
-    
-        return null; // Replace null with the variable you used to store the result
+    Double fahrenheitToCelsius = (fahrenheit - SUBTRACT_FACTOR) * MULTIPLY_FACTOR/DIVIDE_FACTOR;
+        return fahrenheitToCelsius; // Replace null with the variable you used to store the result
     }
 
     
 
     /**
-     * Question 17
+     * Question 17  What does cast mean? <---Correct!! BW
      * Performs division and returns the result as a casted Integer.
      * It should cast the result to an Integer.
      * Example: 3 / 2 => 1.5 should return 1
@@ -279,15 +289,15 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Integer performDivisionAndCast(Double a, Double b) {
         // Perform the division and cast (round down) off the result.
-        Double divisionResult = null;
+        Double divisionResult = double.valueof(a/b);
 
         // Write the code for type casting the divisionResult to an Integer
-        Integer roundedResult = null;
-        return null; // Replace null with the variable you used to store the result
+        Integer roundedResult = divisionResult.intValue();
+        return roundedResult; // Replace null with the variable you used to store the result
     }
 
     /**
-     * Question 18
+     * Question 18  <---Correct!!! BW
      * Calculate the weekly and monthly paycheck based on hourly rate and number of hours.
      * Weekly Paycheck is calculated by the formula: rate multiplied by hours.
      * Example: calculateWeeklyPaycheck(10.0, 40.0) should return 400.0
@@ -297,7 +307,8 @@ public with sharing class VariablesDataTypesOperators {
      */
     public static Decimal calculateWeeklyPaycheck(Decimal hourlyRate, Double numberOfHours) {
         // Calculate the weekly paycheck using the formula: rate multiplied by hours
-        return null; // Replace null with the variable you used to store the result
+        Decimal weeklyPaycheck = hourlyRate * numberOfHours;
+        return weeklyPaycheck; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -311,7 +322,8 @@ public with sharing class VariablesDataTypesOperators {
      * @return A Decimal representing the monthly paycheck.
      */
     public static Decimal calculateMonthlyPaycheck(Decimal hourlyRate, Double numberOfHours) {
-        return null; // Replace null with the variable you used to store the result
+        Decimal monthlyPaycheck = hourlyRate * (numberOfHours * 4);
+        return monthlyPaycheck; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -324,7 +336,8 @@ public with sharing class VariablesDataTypesOperators {
      * @param salesTaxRate The sales tax rate as a decimal (e.g., 0.05 for 5% tax).
      * @return The total cost after applying the sales tax.
      */
-    public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {
-        return null; // Replace null with the variable you used to store the result
+    public static Decimal calculateTotalCost(Decimal pricePerUnit, Integer numberOfUnits, Decimal salesTaxRate) {  
+        Decimal totalCost = (pricePerUnit * numberOfUnits) * (1 + salesTaxRate);
+        return totalCost; // Replace null with the variable you used to store the result
     }
 }
